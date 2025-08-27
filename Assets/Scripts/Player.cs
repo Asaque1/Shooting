@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            weapon.Shoot();
+            if(weapon.nowAttackType == PlayerAttackType.baseShot)
+            {
+                weapon.BasicShoot();
+            }
         }
         
 
