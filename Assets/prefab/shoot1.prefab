@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitfx: {fileID: 8697594143118583351, guid: 262120b2845d9a7429bc19d1e140dd91, type: 3}
+  damage: 0
 --- !u!114 &1192355796353930484
 MonoBehaviour:
   m_ObjectHideFlags: 0

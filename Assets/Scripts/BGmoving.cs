@@ -28,7 +28,7 @@ public class BGmoving : MonoBehaviour
         m_time += Time.deltaTime;
         for (int i = 0; i < spaces.GetLength(0);i++)
         {
-            spaces[i].gameObject.transform.position += new Vector3(-0.7f, 0, 0) * m_speed;
+            spaces[i].gameObject.transform.position += new Vector3(-0.45f, 0, 0) * m_speed;
             if (spaces[i].gameObject.transform.position.x <= reapitPosition)
             {
                 spaces[i].gameObject.transform.position += new Vector3(54.4f, 0, 0);

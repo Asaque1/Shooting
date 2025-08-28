@@ -6,12 +6,16 @@ public class Bullet : MonoBehaviour
 {
     Rigidbody2D rigidbody;
     [SerializeField] GameObject hitfx;
-
+    [SerializeField] public int damage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var obj = Instantiate(hitfx);
         obj.transform.position = transform.position;
+
+        var collisionEvent = collision.GetComponent<Enemy>();
+        if (collisionEvent != null)
+            collisionEvent.damage.Invoke(damage);
         
         Destroy(gameObject);
     }

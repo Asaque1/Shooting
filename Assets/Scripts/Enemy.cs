@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Splines;
 
 public class Enemy : MonoBehaviour
@@ -10,21 +11,33 @@ public class Enemy : MonoBehaviour
     [SerializeField] float m_time;
     [SerializeField] float m_mSpeed;
     [SerializeField] GameObject prefabExplosion;
+    [SerializeField] int hp = 10;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    [SerializeField] public UnityEvent<int> damage;
+
+    public void Start()
+    {
+        damage.AddListener(Ondamage);
+    }
+    public void Ondamage(int dmg)
     {
         var obj = Instantiate(prefabExplosion);
         obj.transform.position = transform.position;
-
-        Destroy(gameObject);
+        hp -= dmg;
     }
+
     private void Update()
     {
         m_time += Time.deltaTime * m_mSpeed;
+
+        if (m_time > 1)
+            m_time = 0;
+
         var pos = m_spline.EvaluatePosition(m_time);
         transform.position = pos;
     
-        
+        if(hp <= 0)
+            Destroy(gameObject);
     }
 
     public void Setup(SplineContainer spline)
