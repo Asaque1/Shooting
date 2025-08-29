@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rigid.velocity = m_velocity;
+        rigid.linearVelocity = m_velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

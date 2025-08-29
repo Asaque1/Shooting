@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     public void Setup(Vector3 pos, Vector2 velocity)
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = velocity;
+        rigidbody.linearVelocity = velocity;
         rigidbody.position = pos;
     }
     // Start is called before the first frame update

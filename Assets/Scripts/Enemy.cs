@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] float m_time;
     [SerializeField] float m_mSpeed;
     [SerializeField] GameObject prefabExplosion;
-    [SerializeField] int hp = 10;
+    [SerializeField] int hp = 3;
+    [SerializeField] int bounty;
 
     [SerializeField] public UnityEvent<int> damage;
 
@@ -30,14 +31,16 @@ public class Enemy : MonoBehaviour
     {
         m_time += Time.deltaTime * m_mSpeed;
 
-        if (m_time > 1)
-            m_time = 0;
 
         var pos = m_spline.EvaluatePosition(m_time);
         transform.position = pos;
-    
-        if(hp <= 0)
+
+        if (hp <= 0)
+        {
+            ScoreManager Score = ScoreManager.instance;
+            Score.ScoreUp(bounty);
             Destroy(gameObject);
+        }
     }
 
     public void Setup(SplineContainer spline)

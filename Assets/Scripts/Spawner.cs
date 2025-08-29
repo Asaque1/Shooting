@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
         public int spawnCount;
         public float spawnTime;
         public SplineContainer spline;
+        
     }
     // Start is called before the first frame update
     [SerializeField]

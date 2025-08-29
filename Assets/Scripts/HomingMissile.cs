@@ -40,7 +40,7 @@ public class HomingMissile : MonoBehaviour
         
         dir = Vector3.RotateTowards(transform.right, dir, maxStearingAngle
             * Time.deltaTime * Mathf.Deg2Rad, 0f);
-        rigidbody.velocity = dir * accelCurve.Evaluate(m_time / 3f) * m_speed;
+        rigidbody.linearVelocity = dir * accelCurve.Evaluate(m_time / 3f) * m_speed;
         transform.right = dir;
     }
 
